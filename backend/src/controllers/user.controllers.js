@@ -83,7 +83,19 @@ async function loginControllers(req, res) {
   });
 }
 
+
+
+async function getAllUsersControllers(req,res){
+
+const user = await userModel.findById(req.user.id)
+
+res.status(200).json({
+  message:"all users fetched successfully",
+  user
+})
+}
 module.exports = {
   registerController,
   loginControllers,
+  getAllUsersControllers
 };
