@@ -65,7 +65,7 @@ async function loginControllers(req, res) {
 
   const token = jwt.sign(
     {
-      ifd: user._id,
+      id: user._id,
       userName: user.userName,
     },
     process.env.JWT_SECRET_KEY,
@@ -86,9 +86,7 @@ async function loginControllers(req, res) {
 
 
 async function getAllUsersControllers(req,res){
-
-const user = await userModel.findById(req.user.id)
-
+const user = await userModel.findById(req.user.id);
 res.status(200).json({
   message:"all users fetched successfully",
   user
