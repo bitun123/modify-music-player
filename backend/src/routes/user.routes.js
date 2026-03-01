@@ -13,8 +13,6 @@ userRouter.get(
   userController.getAllUsersControllers,
 );
 
-
-
-
+userRouter.get("/logout", userController.logoutControllers);
 
 module.exports = userRouter;

@@ -1,5 +1,6 @@
 const userModel = require("../models/user.model");
 const jwt = require("jsonwebtoken");
+const blacklistModel  = require("../models/blacklist.model");
 
 async function authUser(req, res, next) {
   const token = req.cookies.token;
@@ -8,6 +9,13 @@ async function authUser(req, res, next) {
       message: "token not provided",
     });
   }
+
+const isBlacklisted = await blacklistModel.findOne({token});
+if(isBlacklisted){
+    return res.status(401).json({
+        message: "Invalid credentials",
+      });
+}
 
   try {
     const decode = jwt.verify(token, process.env.JWT_SECRET_KEY);
