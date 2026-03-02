@@ -4,11 +4,11 @@ import Login from '../features/auth/pages/Login'
 
 export const router = createBrowserRouter([
     {
-        path:'/registration',
-        element:<Registration/>
+        path: '/registration',
+        element: <Registration />
     },
     {
         path: '/login',
-        element: <Login/>
+        element: <Login />
     }
 ])
