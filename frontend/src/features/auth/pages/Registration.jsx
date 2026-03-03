@@ -1,12 +1,25 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth'
 
 function Registration() {
 const [userName, setUserName] = useState("")
 const [email, setEmail] = useState("")
 const [password, setPassword] = useState("")
+const navigate = useNavigate()
+const { handleRegistration, loading } = useAuth()
 
 
+if(loading){
+    return <div><h1>Loading...</h1></div>
+}
+
+
+const handleSubmit = async (e)=>{
+    e.preventDefault();
+    await handleRegistration({userName, email, password})
+    navigate("/login")
+}
 
 
     return (
@@ -15,7 +28,9 @@ const [password, setPassword] = useState("")
                 <h1 className='text-2xl font-semibold'>
                     Registration
                 </h1>
-                <form className='flex flex-col gap-3'>
+                <form className='flex flex-col gap-3'
+                
+                onSubmit={(e) => handleSubmit(e)}>
                     <input 
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
