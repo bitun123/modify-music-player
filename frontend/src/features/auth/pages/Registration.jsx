@@ -2,87 +2,42 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Registration() {
-  const [userName, setUserName] = useState("")
-  const [password, setPassword] = useState("")
-    const [showPassword, setShowPassword] = useState(false)
+const [userName, setUserName] = useState("")
 const [email, setEmail] = useState("")
-  const handleSubmit = (e) => {
-    e.preventDefault()
+const [password, setPassword] = useState("")
 
-  }
 
-  return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-indigo-500 to-purple-700">
-      <div className="bg-white p-10 rounded-lg shadow-2xl w-full max-w-md">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Sign Up</h1>
-        
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="flex flex-col gap-2">
-            <label htmlFor="username" className="font-semibold text-gray-700 text-sm">Username</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              placeholder="Choose a username"
-              className="px-4 py-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all"
-              required
-            />
-          </div>
 
-          <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="font-semibold text-gray-700 text-sm">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              className="px-4 py-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all"
-              required
-            />
-          </div>
 
-          <div className="flex flex-col gap-2">
-            <label htmlFor="password" className="font-semibold text-gray-700 text-sm">Password</label>
-            <div className="relative flex items-center">
-              <input
-                type={showPassword ? 'text' : 'password'}
-                id="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Create a password"
-                className="w-full px-4 py-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all pr-10"
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 text-lg opacity-100 hover:opacity-70 transition-opacity"
-              >
-                {showPassword ? '🙈' : '👁️'}
-              </button>
+    return (
+        <div className='w-full min-h-screen flex justify-center items-center  bg-gradient-to-br from-indigo-500 to-purple-700'>
+            <div className='flex flex-col gap-5'>
+                <h1 className='text-2xl font-semibold'>
+                    Registration
+                </h1>
+                <form className='flex flex-col gap-3'>
+                    <input 
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    type="text" placeholder="Enter your name" className='w-[20rem] text-xl  font-semibold px-4 py-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all' />
+                    <input 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="text" placeholder="Enter your email" className=' w-[20rem] text-xl  font-semibold  px-4 py-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all' />
+                    <input 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    type="password" placeholder="Enter your password" className=' w-[20rem] font-semibold text-xl   px-4 py-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all' />
+                    <button className=' font-semibold cursor-pointer px-2 py-2 bg-linear-to-r from-indigo-700 to-purple-800 text-white rounded  active:scale-95' >
+                        Submit
+                    </button>
+                </form>
+                <p>Already have an account? <Link to="/login" className='text-blue-500 underline'>Login</Link></p>
             </div>
-          </div>
-
-
-          <button 
-            type="submit" 
-            className="w-full py-3 bg-gradient-to-br from-indigo-500 to-purple-700 text-white font-semibold rounded-md hover:shadow-lg hover:from-green-600 hover:to-teal-700 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-          >
-            Sign Up
-          </button>
-        </form>
-
-        <div className="text-center mt-6 text-gray-600 text-sm">
-          Already have an account? <Link to="/login" className="text-green-500 hover:underline">Login</Link>
         </div>
-      </div>
-    </div>
-  )
+
+
+    )
 }
 
 export default Registration
