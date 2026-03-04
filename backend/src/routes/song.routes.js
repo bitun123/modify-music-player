@@ -4,5 +4,6 @@ const songRouter = express.Router();
 const upload = require("../middlewares/upload.middleware")
 
 songRouter.post("/",upload.single("song"), songController.addSongController);
+songRouter.get("/", songController.getAllSongsController);
 
 module.exports = songRouter;
