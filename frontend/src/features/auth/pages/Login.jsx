@@ -20,8 +20,14 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await handleLogin({ userName, email, password });
-    navigate("/")
+    try {
+      await handleLogin({ userName, email, password });
+      navigate("/")
+    } catch (error) {
+      console.log(error)
+    }
+
+
   }
 
 

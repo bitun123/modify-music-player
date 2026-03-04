@@ -38,7 +38,10 @@ async function registerController(req, res) {
 
   res.status(201).json({
     message: "user registered successfully",
-    user,
+    user: {
+      userName: user.userName,
+      email: user.email,
+    },
     token,
   });
 }
@@ -80,7 +83,10 @@ async function loginControllers(req, res) {
 
   res.status(200).json({
     message: "user logged in successfully",
-    user,
+    user:{
+      userName: user.userName,
+      email: user.email,
+    },
     token,
   });
 }
@@ -95,7 +101,7 @@ async function getAllUsersControllers(req, res) {
 
 async function logoutControllers(req, res) {
   const token = req.cookies.token;
-  await redis.set(token,"blacklisted");
+  await redis.set(token, "blacklisted");
   res.clearCookie("token");
 
   res.status(201).json({
