@@ -1,11 +1,11 @@
 const savedSongModel = require("../models/savedSong.model");
 
 async function savedSongController(req, res) {
-  const SongId = req.params.SongId;
+  const songId = req.params.SongId;
   const userId = req.user.id;
 
   const existingSavedSong = await savedSongModel.findOne({
-    songId: SongId,
+    SongId: songId,
     userId: userId,
   });
 
@@ -16,20 +16,20 @@ async function savedSongController(req, res) {
   }
 
   const savedSong = await savedSongModel.create({
-    SongId: SongId,
+    SongId: songId,
     userId: userId,
   });
 
-    const fullSavedSong = await savedSongModel
-      .findById(savedSong._id)
-      .populate("SongId"); 
+  const getSavedSong = await savedSongModel
+    .findById(savedSongs.SongId)
+    .populate("SongId");
 
   res.status(201).json({
     message: "song saved successfully",
-    fullSavedSong,
-
+    savedSong: getSavedSong,
   });
 }
+
 module.exports = {
   savedSongController,
 };

@@ -1,20 +1,21 @@
 const mongoose = require("mongoose");
 
 const savedSongSchema = new mongoose.Schema(
-  {
-    SongId: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-    },
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "users",
-      required: true,
-    },
+{
+  SongId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "songs",   // 👈 must be inside
+    required: true
   },
-  {
-    timestamps: true,
-  },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users",
+    required: true
+  }
+},
+{
+  timestamps: true
+}
 );
 
 const savedSongModel = mongoose.model("savedSongs", savedSongSchema);
