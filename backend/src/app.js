@@ -6,6 +6,7 @@ const cors = require("cors");
  */
 const userRouter = require("./routes/user.routes");
 const SongRouter = require("./routes/song.routes");
+const savedSongRouter = require("./routes/savedSong.routes");
 
 //call express to create an app
 const app = express();
@@ -19,9 +20,11 @@ app.use(
 );
 
 
-
-
+/**
+ * use routes
+ */
 app.use("/api/auth", userRouter);
 app.use("/api/songs", SongRouter);
+app.use("/api/savedSongs", savedSongRouter);
 
 module.exports = app;

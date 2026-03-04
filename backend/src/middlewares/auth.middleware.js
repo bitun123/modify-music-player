@@ -34,5 +34,5 @@ if(isBlacklisted){
 }
 
 module.exports = {
-  authUser,
+  authUser
 };

@@ -4,7 +4,6 @@ const savedSongSchema = new mongoose.Schema(
   {
     SongId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "songs",
       required: true,
     },
     userId: {
