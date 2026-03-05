@@ -37,7 +37,7 @@ export const useAuth = () => {
     setLoading(true);
     try {
       const data = await getAllUsers();
-      setUser(data.users);
+      setUser(data.user);
     } catch (error) {
       console.log(error);
     } finally {
@@ -57,6 +57,10 @@ export const useAuth = () => {
     }
   }
 
+ 
+useEffect(()=>{
+  handleGetAllUser()
+},[])
 
 
   return {
