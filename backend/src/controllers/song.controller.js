@@ -1,6 +1,7 @@
 const songModels = require("../models/song.model");
 const id3 = require("node-id3");
 const storageService = require("../services/storage.service");
+const songModel = require("../models/song.model");
 
 async function addSongController(req, res) {
   const { mood } = req.body;
@@ -36,11 +37,15 @@ async function addSongController(req, res) {
 }
 
 async function getAllSongsController(req, res) {
-  const songs = await songModels.find();
-  res.status(200).json({
-    message: "songs fetched successfully",
-    songs,
-  });
+const {mood} = req.query
+const song = await songModels.find({
+  mood
+})
+
+res.status(200).json({
+  message:"All song fetch successfully",
+  song
+})
 }
 
 module.exports = {
