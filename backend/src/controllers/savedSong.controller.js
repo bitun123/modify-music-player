@@ -37,12 +37,15 @@ const songs = await savedSongModel
 
   
   res.status(200).json({
-    message:"all song get successfully",
+    message:"all SavedSong get successfully",
     songs
   })
 
 
 }
+
+
+
 
 module.exports = {
   savedSongController,

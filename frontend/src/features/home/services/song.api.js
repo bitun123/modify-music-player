@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
+  baseURL: "http://localhost:3000",
   withCredentials: true,
 });
 
@@ -19,12 +19,13 @@ export const createSong = async ({ song, mood }) => {
   return response.data;
 };
 
-export const savedSong = async (SongId) => {
-  const response = await api.post("/api/savedSongs/" + SongId);
-  return response.savedSong;
-};
+// export const savedSong = async (SongId) => {
+//   const response = await api.post("/api/savedSongs/" + SongId);
+//   return response.data;
+// };
 
-export const getAllData = async ({ mood }) => {
-  const response = await api.get("/api/songs?mood=" + mood);
-  return response.song;
+export const getAllSong = async ({ mood }) => {
+   const response = await api.get("/api/songs?mood=" + mood)
+  
+  return response.data;
 };
