@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { registration, login, getAllUsers, logout } from "../services/auth.api";
 import { AuthContext } from "../context/AuthContextProvider";
+import { useEffect } from "react";
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
@@ -55,6 +56,8 @@ export const useAuth = () => {
       setLoading(false);
     }
   }
+
+
 
   return {
     user,
