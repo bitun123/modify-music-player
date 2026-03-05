@@ -14,8 +14,6 @@ async function authUser(req, res, next) {
 
 const isBlacklisted = await redis.get(token);
 
-
-console.log("isBlacklisted",isBlacklisted);
 if(isBlacklisted){
     return res.status(401).json({
         message: "Invalid credentials",

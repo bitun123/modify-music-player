@@ -1,4 +1,5 @@
 const savedSongModel = require("../models/savedSong.model");
+const savedSongRouter = require("../routes/savedSong.routes");
 
 async function savedSongController(req, res) {
   const songId = req.params.SongId;
@@ -20,16 +21,30 @@ async function savedSongController(req, res) {
     userId: userId,
   });
 
-  const getSavedSong = await savedSongModel
-    .findById(savedSongs.SongId)
-    .populate("SongId");
-
   res.status(201).json({
     message: "song saved successfully",
-    savedSong: getSavedSong,
+    savedSong,
   });
+}
+
+async function getSavedAllSongController(req,res){
+
+const songs = await savedSongModel
+  .find({ userId: req.user.id })
+  .populate("SongId");
+
+
+
+  
+  res.status(200).json({
+    message:"all song get successfully",
+    songs
+  })
+
+
 }
 
 module.exports = {
   savedSongController,
+  getSavedAllSongController
 };
