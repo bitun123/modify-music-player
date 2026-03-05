@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { detect,init } from "../utils/utils";
+import { detect, init } from "../utils/utils";
 
 
 export default function FaceExpression() {
@@ -7,10 +7,10 @@ export default function FaceExpression() {
     const landmarkerRef = useRef(null);
     const streamRef = useRef(null);
 
-    const [ expression, setExpression ] = useState("Detecting...");
+    const [expression, setExpression] = useState("Detecting...");
 
     useEffect(() => {
-        init({landmarkerRef,videoRef,streamRef});
+        init({ landmarkerRef, videoRef, streamRef });
 
         return () => {
             if (landmarkerRef.current) {
@@ -26,14 +26,13 @@ export default function FaceExpression() {
     }, []);
 
     return (
-        <div style={{ textAlign: "center" }}>
+        <div className="w-[20rem] h-[20rem] flex flex-col gap-3 items-center p-2 ">
             <video
                 ref={videoRef}
-                style={{ width: "400px", borderRadius: "12px" }}
                 playsInline
             />
-            <h2>{expression}</h2>
-            <button onClick={()=>{detect({landmarkerRef,videoRef,setExpression})}} >Detect expression</button>
+            <h2 className="text-xl font-semibold ">{expression}</h2>
+            <button onClick={() => { detect({ landmarkerRef, videoRef, setExpression }) }} className="px-1 py-1 border-none outline-none text-xl bg-orange-300 rounded active:scale-95 cursor-pointer">Detect expression</button>
         </div>
     );
 }
