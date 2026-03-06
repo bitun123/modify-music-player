@@ -26,6 +26,7 @@ export const useSong = () => {
     song,
     loading,
     allSong,
+    setSong,
     handleCreateSong,
     handleGetAllSong,
     // playlist,

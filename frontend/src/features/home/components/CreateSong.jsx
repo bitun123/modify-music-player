@@ -14,6 +14,7 @@ const {handleCreateSong} =   useSong()
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0]
+    setFileName(selectedFile.name)
     setFile(selectedFile)
   }
 

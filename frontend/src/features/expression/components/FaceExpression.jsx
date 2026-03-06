@@ -36,7 +36,7 @@ onClick(expression)
                 ref={videoRef}
                 playsInline
             />
-            <h2 className="text-xl font-semibold ">{expression}</h2>
+            <h2 className="text-xl font-semibold text-amber-600 ">{expression}</h2>
             <button onClick={() => { handleDetect() }} className="px-1 py-1 border-none outline-none text-xl bg-orange-300 rounded active:scale-95 cursor-pointer">Detect expression</button>
         </div>
     );

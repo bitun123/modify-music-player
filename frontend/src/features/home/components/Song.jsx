@@ -64,13 +64,12 @@ function Song() {
     }
 
     return (
-        <div className="w-full flex gap-[4rem] items-center ">
+        <div className="w-full flex flex-col gap-[4rem] items-center p-2">
             {/* Song Cover */}
-            <div className="flex flex-col justify-center items-center w-[10rem]">
-                <div className="flex flex-col gap-2">
-                    <img src={song.posterUrl} alt="" className='w-[8rem] rounded' />
-                    <h1 className='text-white text-xl font-semibold'>{song.title}</h1>
-                </div>
+            <div className="flex flex-col justify-center items-center w-full h-[10rem] py-3">
+                    <img src={song.posterUrl} alt="" className='w-[100%] h-[100%] object-cover rounded' />
+                <p className="text-orange-400 text-lg font-bold mt-2">{song.title}</p>
+        
 
             </div>
             <audio
