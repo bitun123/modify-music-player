@@ -1,7 +1,9 @@
 import React, {  useState } from 'react'
 import { useSong } from '../hooks/useSong'
 
-function CreateSong() {
+
+
+function CreateSong({ setopen }) {
   const [file, setFile] = useState('')
   const [mood, setMood] = useState('')
   const [loading, setLoading] = useState(false)
@@ -45,6 +47,7 @@ const {handleCreateSong} =   useSong()
       setError(err.response?.data?.message || 'Failed to create song. Please try again.')
     } finally {
       setLoading(false)
+      setopen(false)
     }
   }
 
@@ -67,8 +70,12 @@ const {handleCreateSong} =   useSong()
   }
 
   return (
-    <div className='w-full min-h-screen flex justify-center items-center  p-4'>
-      <div className='w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-8'>
+    <div className='  flex justify-center items-center  backdrop-blur-[0.5rem]'>
+      <div className='w-[40rem] max-w-md bg-gray-600 rounded-lg shadow-lg p-8 relative'>
+<div className='absolute top-2 right-5 cursor-pointer' onClick={() => setopen(false)}>
+    <h1 className='text-white text-2xl'><i className="ri-close-large-line"></i></h1>
+</div>
+
         <h1 className='text-3xl font-bold text-gray-800 mb-8 text-center'>Create Song</h1>
         
         <form onSubmit={handleSubmit} className='flex flex-col gap-6'>
