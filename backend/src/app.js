@@ -15,11 +15,11 @@ app.use(cookie());
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://your-frontend-domain.com"],
     credentials: true,
   }),
 );
-app.use(express.static("./public"))
+app.use(express.static("./public"));
 
 /**
  * use routes
