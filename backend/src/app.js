@@ -1,6 +1,7 @@
 const express = require("express");
 const cookie = require("cookie-parser");
 const cors = require("cors");
+
 /**
  * @importing Routes
  */
@@ -18,7 +19,7 @@ app.use(
     credentials: true,
   }),
 );
-
+app.use(express.static("./public"))
 
 /**
  * use routes
