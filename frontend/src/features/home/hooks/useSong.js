@@ -19,9 +19,8 @@ export const useSong = () => {
   async function handleCreateSong({ song, mood }) {
     setLoading(true);
     const data = await createSong({ song, mood });
+    console.log(data)
     setSong(data.song);
-    // setPlaylist([data.song]);
-    // setCurrentTrackIndex(0);
     setLoading(false);
   }
 
@@ -30,7 +29,7 @@ export const useSong = () => {
     const data = await getAllSong({ mood });
     console.log(data);
     setSong(data.song?.[0] || {});
-      console.log(song);
+     
     setLoading(false);
   }
 

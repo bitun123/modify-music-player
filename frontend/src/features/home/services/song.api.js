@@ -6,11 +6,12 @@ const api = axios.create({
 });
 
 export const createSong = async ({ song, mood }) => {
-  const fromData = new fromData();
-  fromData.append("song", song);
-  fromData.append("mood", mood);
+  const formData = new FormData();
 
-  const response = await api.post("/api/songs/", fromData, {
+  formData.append("song", song);
+  formData.append("mood", mood);
+
+  const response = await api.post("/api/songs/", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -26,6 +27,6 @@ export const createSong = async ({ song, mood }) => {
 
 export const getAllSong = async ({ mood }) => {
    const response = await api.get("/api/songs?mood=" + mood)
-  
+  // console.log(response.data)
   return response.data;
 };

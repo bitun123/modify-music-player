@@ -2,13 +2,13 @@ import React, { useState, useRef } from 'react'
 import { useSong } from '../hooks/useSong'
 
 function Song() {
+    const { song } = useSong()
     const [isPlaying, setIsPlaying] = useState(false)
     const [currentTime, setCurrentTime] = useState(0)
     const [duration, setDuration] = useState(0)
     const [playbackSpeed, setPlaybackSpeed] = useState(1)
     const [volume, setVolume] = useState(100)
     const audioRef = useRef(null)
-    const { song } = useSong()
     const handlePlayPause = () => {
         if (audioRef.current) {
             if (isPlaying) {
